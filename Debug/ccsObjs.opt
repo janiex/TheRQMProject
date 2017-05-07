@@ -1,0 +1,1 @@
+"./ADXL345.obj" "./Alarm.obj" "./Counter.obj" "./DSP2833x_GlobalVariableDefs.obj" "./DefaultInt.obj" "./ISO2631_All_GenerationTemplate.obj" "./ISO2631_All_GenerationTemplate_data.obj" "./InitHW.obj" "./Main.obj" "./MyISR.obj" "./Schedule.obj" "./Task.obj" "./UserTasks.obj" "../28335_RAM_lnk.cmd" "../DSP2833x_Headers_nonBIOS.cmd" -llibc.a 

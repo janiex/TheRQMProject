@@ -1,0 +1,84 @@
+uC {
+    MICROCONTROLLER = 3;
+};
+OS {
+    BOOLEAN STACKCHECK = ;
+    BOOLEAN ERRORHOOK = ;
+    BOOLEAN STARTUPHOOK = ;
+    BOOLEAN SHUTDOWNHOOK = ;
+    BOOLEAN PRETASKHOOK = ;
+    BOOLEAN POSTTASKHOOK = ;
+    BOOLEAN PREISRHOOK = ;
+    BOOLEAN POSTISRHOOK = ;
+    BOOLEAN INTERRUPTNESTING = ;
+};
+TASK TASK_ACC
+{
+    TYPE = BASIC;
+    PRIORITY = 90;
+    ACTIVATION = 1;
+    SCHEDULE = NON;
+    CALLSCHEDULER = NO;
+    STACKSIZE = 256;
+    EVENT = ;
+    RESOURCE = ;
+    AUTOSTART = FALSE;
+};
+TASK TASK_ISO2631
+{
+    TYPE = BASIC;
+    PRIORITY = 50;
+    ACTIVATION = 1;
+    SCHEDULE = NON;
+    CALLSCHEDULER = NO;
+    STACKSIZE = 2048;
+    EVENT = ;
+    RESOURCE = ;
+    AUTOSTART = FALSE;
+};
+TASK TASK_Init
+{
+    TYPE = BASIC;
+    PRIORITY = 99;
+    ACTIVATION = 1;
+    SCHEDULE = NON;
+    CALLSCHEDULER = NO;
+    STACKSIZE = 256;
+    EVENT = ;
+    RESOURCE = ;
+    AUTOSTART = TRUE;
+};
+COUNTER COUNTER_SYS
+{
+    TIMER = TIMER_A;
+    MINCYCLE = 1;
+    MAXALLOWEDVALUE = 1000000;
+    TICKPERBASE = 1000;
+    TIME_IN_NS = 10000;
+};
+ALARM ALARM_ACC
+{
+    COUNTER = COUNTER_SYS;
+    ACTION = ACTIVATETASK;
+        {
+            TASK = TASK_ACC;
+        };
+    AUTOSTART = TRUE;
+        {
+            ALARMTIME = 5;
+            CYCLETIME = 5;
+        };
+};
+ALARM ALARM_ISO2631
+{
+    COUNTER = COUNTER_SYS;
+    ACTION = ACTIVATETASK;
+        {
+            TASK = TASK_ISO2631;
+        };
+    AUTOSTART = TRUE;
+        {
+            ALARMTIME = 4;
+            CYCLETIME = 25;
+        };
+};
